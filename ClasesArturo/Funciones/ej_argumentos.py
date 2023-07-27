@@ -1,3 +1,7 @@
+'''
+Crea una función que reciba el nombre de un alumno y sus notas de forma individual.
+Tienes que aprupar las notas (número indeterminado). Muestra el nombre del alumno, sus notas y la media
+'''
 def notas(alumno, *notas):
     print(f'La media de {alumno} es {sum(notas)/len(notas):.2f}')
 notas('Jorge', 6.5, 8.3, 7)
