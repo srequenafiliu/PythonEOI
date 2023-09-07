@@ -19,3 +19,7 @@ class ProductoSchema(Schema):
         validate=validate.Range(min=0, error="El precio no puede ser negativo"),
     )
     imagen = fields.Str(required=True)
+    categoria_id = fields.Integer(required=True)
+
+class ProductoConCategoriaSchema(ProductoSchema):
+    categoria = fields.Nested("CategoriaSchema")

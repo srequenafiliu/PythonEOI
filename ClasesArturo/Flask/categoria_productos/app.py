@@ -1,6 +1,6 @@
 from flask import Flask, send_file
 from db import db
-from routes import rutas_productos
+from routes import rutas_productos, rutas_categorias
 
 app = Flask(__name__)
 
@@ -10,9 +10,10 @@ def serve_image(filename):
     image_path = 'images/' + filename
     return send_file(image_path, mimetype='image/jpeg') 
 
+app.register_blueprint(rutas_categorias, url_prefix="/categorias")
 app.register_blueprint(rutas_productos, url_prefix="/productos")
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///productos.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///categoria-productos.db"
 # pip install pymysql OR pip install mysql-connector-python
 # app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:<password>@localhost/productos"
 # app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+mysqlconnector://root:<password>@localhost/productos"
